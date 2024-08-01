@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_task', function (Blueprint $table) {
+        Schema::create('user_tasks', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
             $table->string('task_name')->nullable();
-            $table->enum('status', ['Pending', 'On Process', 'Completed', 'Cancelled'])->nullable();
+            $table->enum('status', ['Pending', 'On Process', 'Completed', 'Cancelled']);
             $table->text('description')->nullable();
             $table->date('published_at')->nullable();
             $table->date('deadline')->nullable();

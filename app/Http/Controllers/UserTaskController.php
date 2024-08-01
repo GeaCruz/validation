@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\UserTask;
+use Illuminate\Http\Request;
 
 class UserTaskController extends Controller
 {
@@ -13,7 +11,9 @@ class UserTaskController extends Controller
      */
     public function index()
     {
-        //
+        $data['user_tasks'] = UserTask::all();
+        return view('index', $data);
+        //return UserTask::all();
     }
 
     /**
@@ -33,17 +33,17 @@ class UserTaskController extends Controller
             'task_name'   => 'required',
             'status'      => 'required',
             'description' => 'required',
-            'deadline'    => 'required|date',
-        ]);
+            'deadline'    => 'required|date', 
 
+        ]);
         $usertask = new UserTask();
-        $usertask->task_name   = $request['task_name'];
-        $usertask->status      = $request['status'];
-        $usertask->description = $request['description'];
-        $usertask->deadline    = $request['deadline'];
+        $usertask->task_name    =$request['task_name'];
+        $usertask->status       =$request['status'];
+        $usertask->description  =$request['description'];
+        $usertask->deadline     =$request['deadline'];
         $usertask->save();
 
-        return back()->with('success', 'Data Saved Successfully!');
+        return back()->with('success', 'Data saved successfully!.');
     }
 
     /**
@@ -51,7 +51,7 @@ class UserTaskController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
