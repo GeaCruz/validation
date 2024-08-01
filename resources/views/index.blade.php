@@ -23,7 +23,7 @@
         <tbody>
             @foreach ($user_tasks as $user_task)
             <tr>
-                <td>{{ $user_task->taskname }}</td>
+                <td>{{ $user_task->task_name }}</td>
                 <td>{{ $user_task->status }}</td>
                 <td>{{ $user_task->description }}</td>
                 <td>{{ $user_task->deadline }}</td>
@@ -38,6 +38,11 @@
                 </td>
             </tr>
             @endforeach
+            <tr>
+                <td colspan="8" class="text-right">
+                 {!! $user_tasks->links() !!}     
+                </td>
+            </tr>
         </tbody>
     </table>
             </div>
